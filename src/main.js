@@ -18,6 +18,12 @@ import 'mint-ui/lib/style.css'
 // 引入自定义css
 import './assets/css/global.css'
 
+import MyUl from '@/components/Common/MyUl'
+import MyLi from '@/components/Common/MyLi'
+
+Vue.component(MyUl.name,MyUl)
+Vue.component(MyLi.name,MyLi)
+
 // 安装插件 注册全局组件及挂载属性
 Vue.use(MintUI)
 
