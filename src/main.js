@@ -24,9 +24,17 @@ import MyLi from '@/components/Common/MyLi'
 Vue.component(MyUl.name,MyUl)
 Vue.component(MyLi.name,MyLi)
 
+import NavBar from '@/component/Common/NavBar'
+Vue.component(NavBar.name,NavBar)
 // 安装插件 注册全局组件及挂载属性
 Vue.use(MintUI)
 
+//定义moment全局日期过滤器
+import Moment from 'moment'
+
+Vue.filter('convertTime',function (data,formatStr) {
+  return Moment(data).format(formatStr);
+});
 
 Vue.config.productionTip = false
 

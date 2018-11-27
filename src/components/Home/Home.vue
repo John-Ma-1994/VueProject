@@ -23,10 +23,10 @@
     <div class="grid">
       <my-ul>
         <my-li v-for="(grid,index) in grids" :key="index">
-          <a href="">
+          <router-link :to="grid.router">
             <span :class="grid.className"></span>
-            <span>{{grid.title}}</span>
-          </a>
+            <div>{{grid.title}}</div>
+          </router-link>
         </my-li>
       </my-ul>
     </div>
@@ -41,7 +41,7 @@
       return {
         //imgs: [],  //轮播图数据
         grids: [
-          {className: 'cms-news', title: '新闻资讯'},
+          {className: 'cms-news', title: '新闻资讯',router:{name:'news.list'}},
           {className: 'cms-show', title: '商品展示'},
           {className: 'cms-share', title: '图文分享'},
           {className: 'cms-back', title: '留言反馈'},
@@ -68,47 +68,44 @@
     height: 200px;
   }
 
+  a{
+    text-decoration: none;
+  }
   /*九宫格样式*/
 
   .cms-news {
-    background-image: url("../../assets/img/news.png");
-    background-repeat: round;
-    display: inline;
+    background-image: url('../../assets/img/news.png');
+    display: inline-block;
     width: 50px;
     height: 50px;
   }
   .cms-show {
-    background-image: url("../../assets/img/goodsShow.png");
-    background-repeat: round;
-    display: inline;
+    background-image: url('../../assets/img/goodsShow.png');
+    display: inline-block;
     width: 50px;
     height: 50px;
   }
   .cms-share {
     background-image: url("../../assets/img/picShare.png");
-    background-repeat: round;
-    display: inline;
+    display: inline-block;
     width: 50px;
     height: 50px;
   }
   .cms-back {
     background-image: url("../../assets/img/feedback.png");
-    background-repeat: round;
-    display: inline;
+    display: inline-block;
     width: 50px;
     height: 50px;
   }
   .cms-search {
     background-image: url("../../assets/img/search.png");
-    background-repeat: round;
-    display: inline;
+    display: inline-block;
     width: 50px;
     height: 50px;
   }
   .cms-call {
     background-image: url("../../assets/img/callme.png");
-    background-repeat: round;
-    display: inline;
+    display: inline-block;
     width: 50px;
     height: 50px;
   }

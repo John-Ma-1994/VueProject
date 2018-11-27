@@ -3,7 +3,7 @@
     <mt-header title=" 信息管理系统"></mt-header>
 
     <router-view/>
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <img slot="icon" src="./assets/img/index.png">
         首页
@@ -32,7 +32,7 @@
       }
     },
     watch:{
-      selected(newV,OldV){
+      selected(newV,oldV){
         this.$router.push({
             name:newV
         })
