@@ -5,19 +5,19 @@
     <router-view/>
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
-        <img slot="icon" src="./assets/img/index.png">
+        <img @click="changeHash" slot="icon" src="./assets/img/index.png">
         首页
       </mt-tab-item>
       <mt-tab-item id="shopcart">
-        <img slot="icon" src="./assets/img/shopcart.png">
+        <img @click="changeHash" slot="icon" src="./assets/img/shopcart.png">
         购物车
       </mt-tab-item>
       <mt-tab-item id="search">
-        <img slot="icon" src="./assets/img/find.png">
+        <img @click="changeHash" slot="icon" src="./assets/img/find.png">
         查找
       </mt-tab-item>
       <mt-tab-item id="member">
-        <img slot="icon" src="./assets/img/vip.png">
+        <img @click="changeHash" slot="icon" src="./assets/img/vip.png">
         会员
       </mt-tab-item>
     </mt-tabbar>
@@ -31,12 +31,23 @@
         selected:''
       }
     },
+    methods:{
+      changeHash(){
+        this.$nextTick(function () {
+          //在vue完成渲染任务以后的行为
+          this.$router.push({
+            name:this.selected
+          })
+        })
+
+      }
+    },
     watch:{
-      selected(newV,oldV){
+      /*selected(newV,oldV){
         this.$router.push({
             name:newV
         })
-      }
+      }*/
     }
   }
 </script>

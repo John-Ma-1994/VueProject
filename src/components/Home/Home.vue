@@ -42,11 +42,11 @@
         //imgs: [],  //轮播图数据
         grids: [
           {className: 'cms-news', title: '新闻资讯',router:{name:'news.list'}},
-          {className: 'cms-show', title: '商品展示'},
-          {className: 'cms-share', title: '图文分享'},
-          {className: 'cms-back', title: '留言反馈'},
-          {className: 'cms-search', title: '搜索资讯'},
-          {className: 'cms-call', title: '联系我们'}
+          {className: 'cms-show', title: '商品展示',router:{name:'photo.list'}},
+          {className: 'cms-share', title: '图文分享',router:{name:'photo.list',params:{categoryId:0}}},
+          {className: 'cms-back', title: '留言反馈',router:{name:'news.list'}},
+          {className: 'cms-search', title: '搜索资讯',router:{name:'news.list'}},
+          {className: 'cms-call', title: '联系我们',router:{name:'news.list'}}
         ]
       }
     },

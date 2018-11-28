@@ -18,13 +18,15 @@ import 'mint-ui/lib/style.css'
 // 引入自定义css
 import './assets/css/global.css'
 
+import './assets/ttf/iconfont.css'
+
 import MyUl from '@/components/Common/MyUl'
 import MyLi from '@/components/Common/MyLi'
 
 Vue.component(MyUl.name,MyUl)
 Vue.component(MyLi.name,MyLi)
 
-import NavBar from '@/component/Common/NavBar'
+import NavBar from '@/components/Common/NavBar'
 Vue.component(NavBar.name,NavBar)
 // 安装插件 注册全局组件及挂载属性
 Vue.use(MintUI)
