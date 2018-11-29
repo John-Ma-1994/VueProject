@@ -12,6 +12,7 @@ Vue.prototype.$axios = Axios
 
 // 配置MintUI
 import MintUI from 'mint-ui'
+import VuePreview from 'vue-preview'
 // 引入css
 import 'mint-ui/lib/style.css'
 
@@ -28,15 +29,25 @@ Vue.component(MyLi.name,MyLi)
 
 import NavBar from '@/components/Common/NavBar'
 Vue.component(NavBar.name,NavBar)
+
+import Comment from '@/components/Common/Comment'
+Vue.component(Comment.name,Comment)
 // 安装插件 注册全局组件及挂载属性
 Vue.use(MintUI)
 
+Vue.use(VuePreview)
+
 //定义moment全局日期过滤器
 import Moment from 'moment'
-
+//设置中文显示
+Moment.locale('zh-cn')
 Vue.filter('convertTime',function (data,formatStr) {
   return Moment(data).format(formatStr);
 });
+//相对时间
+Vue.filter('relativeTime',function (previousTime) {
+  return Moment(previousTime).fromNow();
+})
 
 Vue.config.productionTip = false
 
