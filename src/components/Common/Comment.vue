@@ -9,10 +9,10 @@
             </div>
           </li>
           <li class="txt-comment">
-            <textarea></textarea>
+            <textarea v-model="newComment"></textarea>
           </li>
           <li>
-            <mt-button type="primary" size="large">发表评论</mt-button>
+            <mt-button @click="sendMsg" type="primary" size="large">发表评论</mt-button>
           </li>
           <li class="photo-comment">
             <div>
@@ -37,7 +37,8 @@
         data(){
           return{
             page:1,// 组件内控制页码
-            msgs:[]
+            msgs:[],
+            newComment:''
           }
         },
         props:['cid'],//评论需要的id
@@ -74,6 +75,21 @@
                 this.page ++; //页码
               })
               .catch(err=>console.log("评论获取失败",err));
+          },
+          sendMsg(){
+            if(this.new.trim() === ''){
+              return this.$toast('评论信息不能为空');
+            }
+            //获取评论信息
+            this.$axios.post('postcomment/'+ this.cid,'content=' + this.newComment)
+              .then(res=>{
+                // 发表之后，清空评论框
+                this.newComment = '';
+                // 加载第一页数据，即最新数据
+                this.page = 1;
+                this.loadMore();
+              }).catch(err=>console.log('发表评论失败',err));
+
           }
         }
     }

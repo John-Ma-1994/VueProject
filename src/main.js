@@ -32,6 +32,9 @@ Vue.component(NavBar.name,NavBar)
 
 import Comment from '@/components/Common/Comment'
 Vue.component(Comment.name,Comment)
+
+import MySwipe from '@/component/Common/MySwipe'
+Vue.component(MySwipe.name,MySwipe)
 // 安装插件 注册全局组件及挂载属性
 Vue.use(MintUI)
 
@@ -48,6 +51,25 @@ Vue.filter('convertTime',function (data,formatStr) {
 Vue.filter('relativeTime',function (previousTime) {
   return Moment(previousTime).fromNow();
 })
+//处理字符串过长的过滤器
+Vue.filter('convertStr',function (str,count) {
+  return str.substring(0,count) + '...';
+})
+
+// 配置请求拦截器，显示loading图标
+Axios.interceptors.request.use(function (config) {
+  MintUI.Indicator.open({
+    test:'加载中...'
+  });
+  return config;
+})
+// 配置响应拦截器，关闭loading图标
+Axios.interceptors.request.use(function (response) {
+  // response.config 类似 上面config
+  MintUI.Indicator.close();
+  return response;
+})
+
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--<my-swipe url="getlunbo"/>-->
     <mt-swipe :show-indicators="false">
       <!--<mt-swipe-item v-for="(img,index) in imgs" :key="index">
         <img :src="img.img"/>
@@ -42,7 +43,7 @@
         //imgs: [],  //轮播图数据
         grids: [
           {className: 'cms-news', title: '新闻资讯',router:{name:'news.list'}},
-          {className: 'cms-show', title: '商品展示',router:{name:'photo.list'}},
+          {className: 'cms-show', title: '商品展示',router:{name:'goods.list',query:{id:1}}},
           {className: 'cms-share', title: '图文分享',router:{name:'photo.list',params:{categoryId:0}}},
           {className: 'cms-back', title: '留言反馈',router:{name:'news.list'}},
           {className: 'cms-search', title: '搜索资讯',router:{name:'news.list'}},
@@ -64,9 +65,6 @@
 </script>
 
 <style scoped>
-  .mint-swipe {
-    height: 200px;
-  }
 
   a{
     text-decoration: none;
