@@ -17,7 +17,7 @@
             <s>${{goodsInfo.market_price}}</s> 销售价:<span>${{goodsInfo.sell_price}}</span>
           </li>
           <li class="number-li">
-            购买数量:<span>-</span><span>1</span><span>+</span>
+            购买数量:<span @click="substract">-</span><span>{{pickNum}}</span><span @click="add">+</span>
           </li>
           <li>
             <mt-button type="primary">立即购买</mt-button>
@@ -41,8 +41,8 @@
       <div class="product-info">
         <ul>
           <li>
-            <mt-button type="primary" size="large" plain>图文介绍</mt-button>
-            <mt-button type="primary" size="large" plain>商品评论</mt-button>
+            <mt-button @click="showPhotoInfo" type="primary" size="large" plain>图文介绍</mt-button>
+            <mt-button @click="goodsComment" type="primary" size="large" plain>商品评论</mt-button>
           </li>
         </ul>
       </div>
@@ -51,19 +51,59 @@
 </template>
 
 <script>
+  import EventBus from '@/Eventbus';
+
     export default {
       name: "GoodsDetail",
       data(){
         return{
+          isExist:false,
           goodsInfo:{},
+          pickNum:1,
         }
       },
       methods:{
+
+        add(){
+          if(this.pickNum >= this.goodsInfo.count){
+            return ;
+          }
+          this.pickNum ++;
+        },
+        substract(){
+          if(this.pickNum <= 1){
+            return ;
+          }
+          this.pickNum --;
+        },
+
         inseretBall(){
           this.isExist = true;
+
         },
         afterEnter(){
           this.isExist = false;
+          //通知App组件增加小球数量
+          EventBus.$emit('addShopcart',this.pickNum);
+        },
+        //图文介绍
+        showPhotoInfo(){
+          //编程导航
+          this.$router.push({
+            name:'photo.info',
+            query:{
+              id:this.$route.params.id
+            }
+          });
+        },
+        //商品评论
+        goodsComment(){
+          this.$router.push({
+            name:'goods.comment',
+            query:{
+              id:this.$route.params.id
+            }
+          });
         }
       },
       created(){
