@@ -52,6 +52,7 @@
 
 <script>
   import EventBus from '@/Eventbus';
+  import GoodsTools from '@/GoodsTools';
 
     export default {
       name: "GoodsDetail",
@@ -85,6 +86,12 @@
           this.isExist = false;
           //通知App组件增加小球数量
           EventBus.$emit('addShopcart',this.pickNum);
+
+          // 添加本地存储
+          GoodsTools.add({
+            id:this.goodsInfo.id,
+            num:this.pickNum
+          });
         },
         //图文介绍
         showPhotoInfo(){

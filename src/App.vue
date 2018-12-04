@@ -2,7 +2,10 @@
   <div>
     <mt-header title=" 信息管理系统"></mt-header>
 
-    <router-view class="tmpl"/>
+    <transition name="rv" mode="out-in">
+      <router-view class="tmpl"/>
+    </transition>
+
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <img @click="changeHash" slot="icon" src="./assets/img/index.png">
@@ -25,7 +28,8 @@
 </template>
 
 <script>
-  import EventBus from './Eventbus';
+  import EventBus from './Eventbus.js';
+  import GoodsTools from './GoodsTools.js';
 
   export default {
     created(){
@@ -60,6 +64,14 @@
   }
 </script>
 
-<style>
+<style scoped>
+
+  .rv-enter-active,.rv-leave-active {
+    transition: opacity .5s;
+  }
+
+  .rv-enter, .rv-leave-to{
+    opacity: 0;
+  }
 
 </style>

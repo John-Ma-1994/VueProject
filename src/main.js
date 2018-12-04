@@ -33,8 +33,9 @@ Vue.component(NavBar.name,NavBar)
 import Comment from '@/components/Common/Comment'
 Vue.component(Comment.name,Comment)
 
-import MySwipe from '@/component/Common/MySwipe'
+import MySwipe from '@/components/Common/MySwipe'
 Vue.component(MySwipe.name,MySwipe)
+
 // 安装插件 注册全局组件及挂载属性
 Vue.use(MintUI)
 

@@ -11,7 +11,7 @@ import PhotoList from '@/components/Photo/PhotoList'
 import PhotoDetail from '@/components/Photo/PhotoDetail'
 import GoodsList from '@/components/Goods/GoodsList'
 import GoodsDetail from '@/components/Goods/GoodsDetail'
-import GoodsComment from '@/components/GoodsComment'
+import GoodsComment from '@/components/Goods/GoodsComment'
 // 注册全局组件router-view router-link
 // 挂在Vue.prototype.$router||$route
 // 未来所有的组件中的this对象,就具备该属性,所有的this其实就是Vue的子类对象
