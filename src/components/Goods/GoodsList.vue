@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div :style="{height: boxHeight}">
       <nav-bar title="商品展示"></nav-bar>
       <mt-loadmore :auto-fill="false" :bottom-method="loadBottom" :bottom-all-loaded="isAllLoaded" ref="loadmore">
         <ul>
@@ -37,8 +37,10 @@
 
     export default {
       name: "GoodsList",
+      props:['apprefs'],
       data(){
         return{
+          boxHeight:0,
           goodsList:[],
           page:1,
           isAllLoaded:false,//判断全部数据是否加载完毕
@@ -47,6 +49,14 @@
       created(){
         this.page = this.$route.query.id || '1';
         this.loadByPage(this.page);
+      },
+      mounted(){
+        //装载数据完成  接收apprefs.appHeader
+        // 公式：设备高度 - 头 - 尾 = 中间的高度（loadmore）
+        let headerHight = this.apprefs.appHeader.$el.offsetHeight;
+        let footerHight = this.apprefs.appFooter.$el.offsetHeight;
+        this.boxHeight = document.body.clientHeight - headerHight- footerHight;
+
       },
       methods:{
         loadByPage(){

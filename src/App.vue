@@ -1,12 +1,12 @@
 <template>
   <div>
-    <mt-header title=" 信息管理系统"></mt-header>
+    <mt-header title=" 信息管理系统" ref="appHeader"></mt-header>
 
     <transition name="rv" mode="out-in">
-      <router-view class="tmpl"/>
+      <router-view class="tmpl" :apprefs="$refs"/>
     </transition>
 
-    <mt-tabbar v-model="selected" fixed>
+    <mt-tabbar v-model="selected" fixed ref="appFooter">
       <mt-tab-item id="home">
         <img @click="changeHash" slot="icon" src="./assets/img/index.png">
         首页
